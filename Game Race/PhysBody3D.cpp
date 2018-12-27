@@ -2,6 +2,7 @@
 #include "glmath.h"
 #include "Bullet/include/btBulletDynamicsCommon.h"
 
+
 // =================================================
 PhysBody3D::PhysBody3D(btRigidBody* body) : body(body)
 {}
@@ -44,4 +45,13 @@ void PhysBody3D::SetPos(float x, float y, float z)
 	btTransform t = body->getWorldTransform();
 	t.setOrigin(btVector3(x, y, z));
 	body->setWorldTransform(t);
+}
+
+
+vec3 PhysBody3D::GetPos() const
+{
+	btTransform t = body->getWorldTransform();
+	btVector3 origin = t.getOrigin();
+	vec3 o(origin.getX(), origin.getY(), origin.getZ());
+	return o;
 }

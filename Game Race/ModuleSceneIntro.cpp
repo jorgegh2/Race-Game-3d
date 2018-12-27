@@ -20,6 +20,10 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
+	hola.SetPos(0, 5, 0);
+	physHola = App->physics->AddBody(hola, 1000);
+	
+
 	return ret;
 }
 
@@ -37,6 +41,14 @@ update_status ModuleSceneIntro::Update(float dt)
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
+
+	vec3 origin = physHola->GetPos();
+
+	
+	hola.SetPos(origin.x, origin.y, origin.z);
+
+	hola.Render();
+
 
 	return UPDATE_CONTINUE;
 }
