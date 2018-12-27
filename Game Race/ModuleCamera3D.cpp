@@ -124,6 +124,7 @@ void ModuleCamera3D::Look(const vec3 &Position, const vec3 &Reference, bool Rota
 // -----------------------------------------------------------------
 void ModuleCamera3D::LookAt( const vec3 &Spot)
 {
+
 	Reference = Spot;
 
 	Z = normalize(Position - Reference);

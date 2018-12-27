@@ -18,7 +18,7 @@ bool ModuleSceneIntro::Start()
 	bool ret = true;
 
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
-	App->camera->LookAt(vec3(0, 0, 0));
+	//App->camera->LookAt(vec3(0, 0, 0));
 
 	hola.SetPos(0, 5, 0);
 	physHola = App->physics->AddBody(hola, 1000);

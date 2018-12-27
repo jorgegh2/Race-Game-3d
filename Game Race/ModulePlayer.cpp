@@ -100,7 +100,9 @@ bool ModulePlayer::Start()
 	vehicle = App->physics->AddVehicle(car);
 	vehicle->SetPos(0, 12, 10);
 	
-
+	VehiclePos = vehicle->GetPos();
+	App->camera->Move(VehiclePos);
+	App->camera->LookAt(VehiclePos);
 
 	return true;
 }
@@ -145,6 +147,7 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Brake(brake);
 
 	VehiclePos = vehicle->GetPos();
+	App->camera->Position = VehiclePos - vec3{0,-4,8};
 	App->camera->LookAt(VehiclePos);
 	vehicle->Render();
 
