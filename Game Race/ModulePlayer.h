@@ -22,7 +22,6 @@ public:
 public:
 
 	PhysVehicle3D* vehicle;
-	vec3 VehiclePos;
 	float turn;
 	float acceleration;
 	float brake;

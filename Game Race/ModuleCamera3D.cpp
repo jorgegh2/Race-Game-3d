@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "PhysBody3D.h"
 #include "ModuleCamera3D.h"
+#include "PhysVehicle3D.h"
 
 ModuleCamera3D::ModuleCamera3D(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -155,4 +156,16 @@ void ModuleCamera3D::CalculateViewMatrix()
 {
 	ViewMatrix = mat4x4(X.x, Y.x, Z.x, 0.0f, X.y, Y.y, Z.y, 0.0f, X.z, Y.z, Z.z, 0.0f, -dot(X, Position), -dot(Y, Position), -dot(Z, Position), 1.0f);
 	ViewMatrixInverse = inverse(ViewMatrix);
+}
+
+void ModuleCamera3D::CameraFollowVehicle(float distance)
+{
+
+	vec3 VehiclePos = App->player->vehicle->GetPos();
+
+	vec3 BackDirection = App->player->vehicle->GetBackDirection();
+	BackDirection.y = 0.4;
+	App->camera->Position = VehiclePos + (distance * BackDirection) ;
+
+	App->camera->LookAt(VehiclePos);
 }

@@ -100,10 +100,6 @@ bool ModulePlayer::Start()
 	vehicle = App->physics->AddVehicle(car);
 	vehicle->SetPos(0, 12, 10);
 	
-	VehiclePos = vehicle->GetPos();
-	App->camera->Move(VehiclePos);
-	App->camera->LookAt(VehiclePos);
-
 	return true;
 }
 
@@ -146,10 +142,11 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
 
-	VehiclePos = vehicle->GetPos();
-	App->camera->Position = VehiclePos - vec3{0,-4,8};
-	App->camera->LookAt(VehiclePos);
+	App->camera->CameraFollowVehicle(15);
+
 	vehicle->Render();
+
+	
 
 	char title[80];
 	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());
