@@ -44,4 +44,6 @@ public:
 
 	Cube hola;
 	PhysBody3D* physHola;
+
+	PhysBody3D* Sensor;
 };

@@ -5,7 +5,9 @@
 
 // =================================================
 PhysBody3D::PhysBody3D(btRigidBody* body) : body(body)
-{}
+{
+	body->setUserPointer(this);
+}
 
 // ---------------------------------------------------------
 PhysBody3D::~PhysBody3D()
@@ -54,4 +56,16 @@ vec3 PhysBody3D::GetPos() const
 	btVector3 origin = t.getOrigin();
 	vec3 o(origin.getX(), origin.getY(), origin.getZ());
 	return o;
+}
+
+void PhysBody3D::SetAsSensor(bool is_sensor)
+{
+	if (this->is_sensor != is_sensor)
+	{
+		this->is_sensor = is_sensor;
+		if (is_sensor == true)
+			body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+		else
+			body->setCollisionFlags(body->getCollisionFlags() &~btCollisionObject::CF_NO_CONTACT_RESPONSE);
+	}
 }
