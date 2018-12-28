@@ -6,6 +6,8 @@
 
 //EN START() CREATE BODY, HACER FUNCIÓN PARA RECOPILAR TODAS LAS WALL
 
+#define WALL_MASS 100000
+
 class ModuleTrack : public Module {
 public:
 	ModuleTrack(Application* app, bool start_enable = true);
@@ -16,7 +18,10 @@ public:
 	bool CleanUp();
 
 public:
-	Cube wall;
-	float wall_mass;
+	Cube wall_1right;
+	PhysBody3D* physWall_1right;
+
+	Cube wall_1left;
+	PhysBody3D* physWall_1left;
 
 };

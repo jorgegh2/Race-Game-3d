@@ -6,7 +6,6 @@
 
 ModuleTrack::ModuleTrack(Application* app, bool start_enable) : Module(app, start_enable) {
 
-	wall_mass = 0.0f;
 }
 
 ModuleTrack::~ModuleTrack() {}
@@ -17,16 +16,20 @@ bool ModuleTrack::Start() {
 
 	LOG("Loading track circuit");
 
-	//Wall mass
-	wall_mass = 30.0f;
+	//Wall Derecha Recta1 
+	wall_1right.SetPos(10, 0, 0);
+	wall_1right.size = { 5,5,50 };
+	physWall_1right = App->physics->AddBody(wall_1right, WALL_MASS);
+	wall_1right.SetRotation(0, { 0,1,0 });
+	physWall_1right->SetTransform(wall_1right.transform.M);
 
-	//Track walls
-	wall.size.x = 10;
-	wall.size.y = 10;
-	wall.size.z = 10;
-
-	wall.SetPos(50, 50, 0);
-	App->physics->AddBody(wall, wall_mass);
+	//Wall Izquierda Recta1 
+	wall_1left.SetPos(-10, 0, 0);
+	wall_1left.size = { 5,5,50 };
+	physWall_1left = App->physics->AddBody(wall_1left, WALL_MASS);
+	wall_1left.SetRotation(0, { 0,1,0 });
+	physWall_1left->SetTransform(wall_1left.transform.M);
+	
 
 	return true;
 }
@@ -41,7 +44,17 @@ bool ModuleTrack::CleanUp() {
 
 update_status ModuleTrack::Update(float dt) {
 
-	wall.Render();
+	Plane p(0, 1, 0, 0);
+	p.axis = true;
+	p.Render();
+
+	vec3 origin_wall_1right = physWall_1right->GetPos();
+	wall_1right.SetPos(origin_wall_1right.x, origin_wall_1right.y, origin_wall_1right.z);
+	wall_1right.Render();
+
+	vec3 origin_wall_1left = physWall_1left->GetPos();
+	wall_1left.SetPos(origin_wall_1left.x, origin_wall_1left.y, origin_wall_1left.z);
+	wall_1left.Render();
 
 	return UPDATE_CONTINUE;
 }
