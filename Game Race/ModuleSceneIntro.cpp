@@ -20,9 +20,11 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	//App->camera->LookAt(vec3(0, 0, 0));
 
-	hola.SetPos(0, 5, 0);
-	physHola = App->physics->AddBody(hola, 1000);
-	
+	hola.SetPos(0, 0, 0);
+	hola.size = { 5,5,5 };
+	physHola = App->physics->AddBody(hola, 100000);
+	hola.SetRotation(45, { 0,1,0 });
+	physHola->SetTransform(hola.transform.M);
 
 	return ret;
 }
@@ -46,7 +48,7 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	
 	hola.SetPos(origin.x, origin.y, origin.z);
-
+	
 	hola.Render();
 
 

@@ -25,7 +25,7 @@ bool ModuleTrack::Start() {
 	wall.size.y = 10;
 	wall.size.z = 10;
 
-	wall.SetPos(0, 50, 0);
+	wall.SetPos(50, 50, 0);
 	App->physics->AddBody(wall, wall_mass);
 
 	return true;
