@@ -20,12 +20,6 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(0.0f, 15.0f, -30.0f));
 	App->camera->LookAt(vec3(0.0f, 0.0f, 1.0f));
 
-	hola.SetPos(5, 5, 5);
-	hola.size = { 5,5,5 };
-	physHola = App->physics->AddBody(hola, 100000);
-	hola.SetRotation(45, { 0,1,0 });
-	physHola->SetTransform(hola.transform.M);
-
 	Cube c = { 10,10,10 };
 	c.SetPos(0, 5, 50);
 	Sensor = App->physics->AddBody(c, 0);
@@ -51,19 +45,11 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	p.Render();
 
-	vec3 origin = physHola->GetPos();
-
-	
-	hola.SetPos(origin.x, origin.y, origin.z);
-	
-	hola.Render();
-
-
 	return UPDATE_CONTINUE;
 }
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	LOG("Yeeeeyy!")
+	LOG("Yeeeeyy!:D")
 }
 

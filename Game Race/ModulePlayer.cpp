@@ -142,7 +142,7 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
 
-	//App->camera->CameraFollowVehicle(15);
+	App->camera->CameraFollowVehicle(15);
 
 	vehicle->Render();
 

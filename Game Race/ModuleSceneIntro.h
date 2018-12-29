@@ -42,8 +42,5 @@ public:
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
 
-	Cube hola;
-	PhysBody3D* physHola;
-
 	PhysBody3D* Sensor;
 };

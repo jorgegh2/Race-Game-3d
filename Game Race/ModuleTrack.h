@@ -17,11 +17,13 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
+	void CreateCube(Cube&, PhysBody3D*, float, float, float);
+
 public:
 	Cube wall_1right;
-	PhysBody3D* physWall_1right;
+	PhysBody3D* physWall_1right = nullptr;
 
 	Cube wall_1left;
-	PhysBody3D* physWall_1left;
+	PhysBody3D* physWall_1left = nullptr;
 
 };
