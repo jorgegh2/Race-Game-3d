@@ -59,6 +59,6 @@ update_status ModuleSceneIntro::Update(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	App->player->cameraActive = false;
+	//App->player->cameraActive = false;
 }
 
