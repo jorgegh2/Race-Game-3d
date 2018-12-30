@@ -20,6 +20,7 @@ public:
 	void SetPos(float x, float y, float z);
 	vec3 GetPos() const;
 	void SetAsSensor(bool is_sensor);
+	void Setgravity0();
 
 private:
 	btRigidBody* body = nullptr;
