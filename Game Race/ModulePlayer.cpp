@@ -66,9 +66,11 @@ update_status ModulePlayer::Update(float dt)
 	car->Turn(turn);
 	car->Brake(brake);
 
-	//App->camera->CameraFollowVehicle(15);
+	//App->camera->CameraFollowVehicle(20);
 
 	car->Render();
+	van->Render();
+	
 	//App->physics->AddConstraintP2P(*vehicle, *pc, vec3{ -3,1,0 }, vec3{ 3,-1,0 });
 
 //	App->physics->AddConstraintHinge(*vehicle, *pc, vec3{ -3,1,0 }, vec3{ 3,-1,0 }, vec3{0,0,1}, vec3{ 0,0,1 });
@@ -88,10 +90,16 @@ PhysVehicle3D* ModulePlayer::CreateCar()
 	VehicleInfo car;
 
 	// Car properties ----------------------------------------
-	car.cube1.Set(2.5f, 2, 5);
+	car.cube1.Set(2.5f, 1.5f, 6.0f);
 	car.cube1_offset.Set(0, 1.5, 0);
-	car.cube2.Set(2.5f, 2, 2);
-	car.cube2_offset.Set(0, 3, 0.5f);
+	car.cube2.Set(2.5f, 1.5f, 4.0f);
+	car.cube2_offset.Set(0, 3, -1.0f);
+	car.cube3.Set(2.5f, 1.0f, 2.0f);
+	car.cube3_offset.Set(0, 1.5f, -2.75f);
+	car.cilindre1.Set(1.5, 2.4, 0);
+	car.cilindre1_offset.Set(0, 2.25f, 1.0f);
+	car.window.Set(2.0f, 1.25f, 1.0f);
+	car.window_offset.Set(0.0f, 3.0f, -2.6f);
 	car.mass = 500.0f;
 	car.suspensionStiffness = 15.88f;
 	car.suspensionCompression = 0.83f;
@@ -101,8 +109,8 @@ PhysVehicle3D* ModulePlayer::CreateCar()
 	car.maxSuspensionForce = 6000.0f;
 
 	// Wheel properties ---------------------------------------
-	float connection_height = 1.2f;
-	float wheel_radius = 0.6f;
+	float connection_height = 1.5f;
+	float wheel_radius = 0.80f;
 	float wheel_width = 0.5f;
 	float suspensionRestLength = 1.2f;
 
