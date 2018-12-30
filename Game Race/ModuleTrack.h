@@ -29,6 +29,8 @@ public:
 	PhysBody3D* physWall_1left = nullptr;
 
 private:
-	p2List<Cube> WallList;
+	p2List<Cube> wallList;
+	p2List<PhysBody3D*> physWallList;
+
 
 };

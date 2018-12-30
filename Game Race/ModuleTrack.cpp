@@ -45,6 +45,10 @@ bool ModuleTrack::CleanUp() {
 
 	LOG("Unloading track circuit");
 
+	wallList.clear();
+	
+	//All bodies are deleted in module physics 
+	physWallList.clear();
 	return true;
 }
 
@@ -53,12 +57,28 @@ void ModuleTrack::CreateWall(float position_x, float position_y, float position_
 	//Addbody y PhysBody añadir
 	Cube wall;
 	PhysBody3D* physWall = nullptr;
-
 	wall.SetPos(position_x, position_y, position_z);
 	wall.size = { 5,3,100 };
 	physWall = App->physics->AddBody(wall, WALL_MASS);
 
-	WallList.add(wall);
+	
+	uint colorCount = wallList.count() % 2;
+	switch (colorCount)
+	{
+	case 0:
+		wall.color = Red;
+		break;
+	case 1:
+		wall.color = Green;
+		break;
+	case 2:
+		wall.color = Blue;
+		break;
+	}
+
+	wallList.add(wall);
+	physWallList.add(physWall);
+
 	//cube.SetRotation(0, { 0,1,0 });
 	//phys_cube->SetTransform(cube.transform.M);
 	
@@ -88,7 +108,7 @@ void ModuleTrack::DrawWalls() const
 {
 	p2List_item<Cube>* item = nullptr;
 
-	for (item = WallList.getFirst(); item; item = item->next)
+	for (item = wallList.getFirst(); item; item = item->next)
 	{
 		item->data.Render();
 	}
