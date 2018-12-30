@@ -38,18 +38,31 @@ void PhysVehicle3D::Render()
 		wheel.Render();
 	}
 
-	Cube chassis(info.chassis_size.x, info.chassis_size.y, info.chassis_size.z);
-	vehicle->getChassisWorldTransform().getOpenGLMatrix(&chassis.transform);
+	Cube cube1(info.cube1.x, info.cube1.y, info.cube1.z);
+	vehicle->getChassisWorldTransform().getOpenGLMatrix(&cube1.transform);
+
+	Cube cube2(info.cube2.x, info.cube2.y, info.cube2.z);
+	vehicle->getChassisWorldTransform().getOpenGLMatrix(&cube2.transform);
+
 	btQuaternion q = vehicle->getChassisWorldTransform().getRotation();
-	btVector3 offset(info.chassis_offset.x, info.chassis_offset.y, info.chassis_offset.z);
-	offset = offset.rotate(q.getAxis(), q.getAngle());
 
-	chassis.transform.M[12] += offset.getX();
-	chassis.transform.M[13] += offset.getY();
-	chassis.transform.M[14] += offset.getZ();
+	btVector3 cube1_offset(info.cube1_offset.x, info.cube1_offset.y, info.cube1_offset.z);
+	cube1_offset = cube1_offset.rotate(q.getAxis(), q.getAngle());
 
+	btVector3 cube2_offset(info.cube2_offset.x, info.cube2_offset.y, info.cube2_offset.z);
+	cube2_offset = cube2_offset.rotate(q.getAxis(), q.getAngle());
 
-	chassis.Render();
+	cube1.transform.M[12] += cube1_offset.getX();
+	cube1.transform.M[13] += cube1_offset.getY();
+	cube1.transform.M[14] += cube1_offset.getZ();
+
+	cube2.transform.M[12] += cube2_offset.getX();
+	cube2.transform.M[13] += cube2_offset.getY();
+	cube2.transform.M[14] += cube2_offset.getZ();
+
+	cube1.Render();
+	cube2.Render();
+
 }
 
 // ----------------------------------------------------------------------------
