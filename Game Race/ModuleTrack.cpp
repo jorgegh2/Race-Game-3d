@@ -4,7 +4,7 @@
 #include "Primitive.h"
 #include "ModuleTrack.h"
 
-ModuleTrack::ModuleTrack(Application* app, bool start_enable) : Module(app, start_enable) 
+ModuleTrack::ModuleTrack(Application* app, bool start_enable) : Module(app, start_enable)
 {
 
 }
@@ -26,7 +26,7 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(10.0f, 1.5f, 22.5f);
 	App->physics->CreateWall(10.0f, 1.5f, 27.5f);
 	App->physics->CreateWall(10.0f, 1.5f, 32.5f);
-	App->physics->CreateWall(10.0f, 1.5f, 37.5f);	
+	App->physics->CreateWall(10.0f, 1.5f, 37.5f);
 
 	App->physics->CreateWall(10.0f, 1.5f, 42.5f);
 	App->physics->CreateWall(10.0f, 1.5f, 47.5f);
@@ -74,7 +74,7 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(-10.0f, 1.5f, 107.5f);
 	App->physics->CreateWall(-10.0f, 1.5f, 112.5f);
 	App->physics->CreateWall(-10.0f, 1.5f, 117.5f);
-	
+
 	//First Curve Right
 
 	App->physics->CreateWall(-7.5f, 1.5f, 122.5f);
@@ -118,7 +118,7 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(70.0f, 1.5f, 157.5f);
 
 	//Curva 2 Derecha
-	
+
 	App->physics->CreateWall(40.0f, 1.5f, 150.0f);
 	App->physics->CreateWall(45.0f, 1.5f, 152.5f);
 	App->physics->CreateWall(45.0f, 1.5f, 157.5f);
@@ -192,14 +192,14 @@ bool ModuleTrack::Start() {
 	PhysBody3D* physRamp1 = nullptr;
 	//{x, 4, x}
 	ramp1.SetPos(-50, 1, 174);
-	ramp1.size = {0.1f, 12, 14};
+	ramp1.size = { 0.1f, 8, 14 };
 	physRamp1 = App->physics->AddBody(ramp1, WALL_MASS);
 
 	ramp1.color = White;
 
-	
-	
-	ramp1.SetRotation(85, {0, 0, 1});
+
+
+	ramp1.SetRotation(85, { 0, 0, 1 });
 	physRamp1->SetTransform(ramp1.transform.M);
 	physRamp1->Setgravity0();
 	App->track->wallList.add(ramp1);
@@ -292,6 +292,24 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(-115.0f, 1.5f, 135.0f);
 	App->physics->CreateWall(-110.0f, 1.5f, 135.0f);
 	App->physics->CreateWall(-105.0f, 1.5f, 135.0f);
+	App->physics->CreateWall(-100.0f, 1.5f, 135.0f);
+
+	App->physics->CreateWall(-100.0f, 1.5f, 130.0f);
+	App->physics->CreateWall(-100.0f, 1.5f, 125.0f);
+	App->physics->CreateWall(-100.0f, 1.5f, 120.0f);
+	App->physics->CreateWall(-100.0f, 1.5f, 115.0f);
+
+	App->physics->CreateWall(-95.0f, 1.5f, 110.0f);
+	App->physics->CreateWall(-90.0f, 1.5f, 105.0f);
+
+	App->physics->CreateWall(-90.0f, 1.5f, 100.0f);
+	App->physics->CreateWall(-90.0f, 1.5f, 95.0f);
+	App->physics->CreateWall(-90.0f, 1.5f, 90.0f);
+	App->physics->CreateWall(-90.0f, 1.5f, 85.0f);
+	App->physics->CreateWall(-90.0f, 1.5f, 80.0f);
+	App->physics->CreateWall(-90.0f, 1.5f, 75.0f);
+	App->physics->CreateWall(-90.0f, 1.5f, 70.0f);
+	App->physics->CreateWall(-90.0f, 1.5f, 65.0f);
 
 	//Espacio Cuadrado Izquierda
 
@@ -300,6 +318,57 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(-142.5f, 1.5f, 110.0f);
 	App->physics->CreateWall(-142.5f, 1.5f, 105.0f);
 	App->physics->CreateWall(-142.5f, 1.5f, 100.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 95.0f);
+
+	App->physics->CreateWall(-137.5f, 1.5f, 95.0f);
+	App->physics->CreateWall(-132.5f, 1.5f, 95.0f);
+	App->physics->CreateWall(-127.5f, 1.5f, 95.0f);
+	App->physics->CreateWall(-122.5f, 1.5f, 95.0f);
+
+	App->physics->CreateWall(-117.5f, 1.5f, 90.0f);
+	App->physics->CreateWall(-112.5f, 1.5f, 85.0f);
+
+	App->physics->CreateWall(-112.5f, 1.5f, 80.0f);
+	App->physics->CreateWall(-112.5f, 1.5f, 75.0f);
+
+
+	//Curva 90 grados Derecha
+
+	App->physics->CreateWall(-90.0f, 1.5f, 60.0f);
+	App->physics->CreateWall(-90.0f, 1.5f, 55.0f);
+
+	App->physics->CreateWall(-95.0f, 1.5f, 55.0f);
+	App->physics->CreateWall(-100.0f, 1.5f, 55.0f);
+	App->physics->CreateWall(-105.0f, 1.5f, 55.0f);
+	App->physics->CreateWall(-110.0f, 1.5f, 55.0f);
+	App->physics->CreateWall(-115.0f, 1.5f, 55.0f);
+	App->physics->CreateWall(-120.0f, 1.5f, 55.0f);
+	App->physics->CreateWall(-125.0f, 1.5f, 55.0f);
+
+	App->physics->CreateWall(-125.0f, 1.5f, 50.0f);
+	App->physics->CreateWall(-125.0f, 1.5f, 45.0f);
+	App->physics->CreateWall(-125.0f, 1.5f, 40.0f);
+	App->physics->CreateWall(-125.0f, 1.5f, 35.0f);
+
+
+
+	//Curva 90 grados Izquierda
+
+	App->physics->CreateWall(-117.5f, 1.5f, 75.0f);
+	App->physics->CreateWall(-122.5f, 1.5f, 75.0f);
+	App->physics->CreateWall(-127.5f, 1.5f, 75.0f);
+	App->physics->CreateWall(-132.5f, 1.5f, 75.0f);
+	App->physics->CreateWall(-137.5f, 1.5f, 75.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 75.0f);
+
+	App->physics->CreateWall(-142.5f, 1.5f, 70.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 65.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 60.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 55.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 50.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 45.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 40.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 35.0f);
 
 	App->audio->PlayMusic("Music/LaCaravana.wav");
 
