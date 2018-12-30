@@ -20,5 +20,9 @@ Left Arrow: Move Left.
 Right Arrow: Move Right.
 Down Arrow: Brake/move Back.
 
+F10: lock/unlock the camera.
+
+F2: Set the caravan in start point.
+
 
 Link to github: https://github.com/jorgegh2/Race-Game-3d
