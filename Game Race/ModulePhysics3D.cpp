@@ -4,6 +4,7 @@
 #include "PhysBody3D.h"
 #include "PhysVehicle3D.h"
 #include "Primitive.h"
+#include "ModuleTrack.h"
 
 #ifdef _DEBUG
 	#pragma comment (lib, "Bullet/libx86/BulletDynamics_debug.lib")
@@ -330,6 +331,36 @@ PhysVehicle3D* ModulePhysics3D::AddVehicle(const VehicleInfo& info)
 	vehicles.add(pvehicle);
 
 	return pvehicle;
+}
+
+void ModulePhysics3D::CreateWall(float position_x, float position_y, float position_z) {
+
+	Cube wall;
+	PhysBody3D* physWall = nullptr;
+
+	wall.SetPos(position_x, position_y, position_z);
+	wall.size = { 5,3,5 };
+	physWall = App->physics->AddBody(wall, WALL_MASS);
+
+	uint colorCount =  App->track->wallList.count() % 8;
+		if (colorCount <= 1) {
+			wall.color = Red;
+		}
+		else if (colorCount <= 3) {
+			wall.color = Blue;
+		}
+		else if (colorCount <= 5) {
+			wall.color = Green;
+		}
+		else {
+			wall.color = Yellow;
+		}
+
+	App->track->wallList.add(wall);
+
+	//cube.SetRotation(0, { 0,1,0 });
+	//phys_cube->SetTransform(cube.transform.M);
+
 }
 
 // ---------------------------------------------------------

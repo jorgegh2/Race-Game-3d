@@ -17,20 +17,8 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
-	void CreateWall(float, float, float);
-
 	void DrawWalls() const;
 
-public:
-	Cube wall_1right;
-	PhysBody3D* physWall_1right = nullptr;
-
-	Cube wall_1left;
-	PhysBody3D* physWall_1left = nullptr;
-
-private:
 	p2List<Cube> wallList;
-	p2List<PhysBody3D*> physWallList;
-
-
+	
 };

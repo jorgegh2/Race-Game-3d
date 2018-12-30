@@ -19,24 +19,14 @@ bool ModuleTrack::Start() {
 
 	//Wall Derecha Recta1 
 
-	CreateWall(10.0f, 1.5f, 50.0f);
-
-	/*wall_1right.SetPos(10, 0, 50);
-	wall_1right.size = { 5,3,100 };
-	physWall_1right = App->physics->AddBody(wall_1right, WALL_MASS);
-	wall_1right.SetRotation(0, { 0,1,0 });
-	physWall_1right->SetTransform(wall_1right.transform.M);*/
-
-	//Wall Izquierda Recta1 
-
-	CreateWall(-10.0f, 1.5f, 50.0f);
-
-	/*wall_1left.SetPos(-10, 0, 50);
-	wall_1left.size = { 5,3,100};
-	physWall_1left = App->physics->AddBody(wall_1left, WALL_MASS);
-	wall_1left.SetRotation(0, { 0,1,0 });
-	physWall_1left->SetTransform(wall_1left.transform.M);*/
-	
+	App->physics->CreateWall(10.0f, 1.5f, 2.5f);
+	App->physics->CreateWall(10.0f, 1.5f, 7.5f);
+	App->physics->CreateWall(10.0f, 1.5f, 12.5f);
+	App->physics->CreateWall(10.0f, 1.5f, 17.5f);
+	App->physics->CreateWall(10.0f, 1.5f, 22.5f);
+	App->physics->CreateWall(10.0f, 1.5f, 27.5f);
+	App->physics->CreateWall(10.0f, 1.5f, 32.5f);
+	App->physics->CreateWall(10.0f, 1.5f, 37.5f);	
 
 	return true;
 }
@@ -48,41 +38,10 @@ bool ModuleTrack::CleanUp() {
 	wallList.clear();
 	
 	//All bodies are deleted in module physics 
-	physWallList.clear();
 	return true;
 }
 
-void ModuleTrack::CreateWall(float position_x, float position_y, float position_z) {
 
-	//Addbody y PhysBody añadir
-	Cube wall;
-	PhysBody3D* physWall = nullptr;
-	wall.SetPos(position_x, position_y, position_z);
-	wall.size = { 5,3,100 };
-	physWall = App->physics->AddBody(wall, WALL_MASS);
-
-	
-	uint colorCount = wallList.count() % 2;
-	switch (colorCount)
-	{
-	case 0:
-		wall.color = Red;
-		break;
-	case 1:
-		wall.color = Green;
-		break;
-	case 2:
-		wall.color = Blue;
-		break;
-	}
-
-	wallList.add(wall);
-	physWallList.add(physWall);
-
-	//cube.SetRotation(0, { 0,1,0 });
-	//phys_cube->SetTransform(cube.transform.M);
-	
-}
 
 
 update_status ModuleTrack::Update(float dt) {
