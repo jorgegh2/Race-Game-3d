@@ -192,7 +192,7 @@ bool ModuleTrack::Start() {
 	PhysBody3D* physRamp1 = nullptr;
 	//{x, 4, x}
 	ramp1.SetPos(-50, 1, 174);
-	ramp1.size = {0.1f, 8, 14};
+	ramp1.size = {0.1f, 12, 14};
 	physRamp1 = App->physics->AddBody(ramp1, WALL_MASS);
 
 	ramp1.color = White;
@@ -300,6 +300,8 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(-142.5f, 1.5f, 110.0f);
 	App->physics->CreateWall(-142.5f, 1.5f, 105.0f);
 	App->physics->CreateWall(-142.5f, 1.5f, 100.0f);
+
+	App->audio->PlayMusic("Music/LaCaravana.wav");
 
 	return true;
 }

@@ -20,9 +20,15 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 
 	car = CreateCar();
-	van = CreateVan();
+	van1 = CreateVan();
+	van2 = CreateVan();
+	van3 = CreateVan();
 
-	App->physics->AddConstraintP2P(*car, *van, vec3{ 0,0.25f,-4 }, vec3{ 0,-0.25f,4 });
+	van2->SetPos(0.0f, 0.0f, -18.0f);
+	van3->SetPos(0.0f, 0.0f, -30.0f);
+	App->physics->AddConstraintP2P(*car, *van1, vec3{ 0,0.25f,-5 }, vec3{ 0,-0.25f,5 });
+	App->physics->AddConstraintP2P(*van1, *van2, vec3{ 0,0.25f,-5 }, vec3{ 0,-0.25f,5 });
+	App->physics->AddConstraintP2P(*van2, *van3, vec3{ 0,0.25f,-5 }, vec3{ 0,-0.25f,5 });
 
 	return true;
 }
@@ -31,6 +37,7 @@ bool ModulePlayer::Start()
 bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
+	
 
 	return true;
 }
@@ -85,7 +92,9 @@ update_status ModulePlayer::Update(float dt)
 	
 
 	car->Render();
-	van->Render();
+	van1->Render();
+	van2->Render();
+	van3->Render();
 	
 	//App->physics->AddConstraintP2P(*vehicle, *pc, vec3{ -3,1,0 }, vec3{ 3,-1,0 });
 
@@ -111,7 +120,7 @@ PhysVehicle3D* ModulePlayer::CreateCar()
 	car.cube2.Set(2.5f, 1.5f, 4.0f);
 	car.cube2_offset.Set(0, 3, -1.0f);
 	car.cube3.Set(2.5f, 1.0f, 2.0f);
-	car.cube3_offset.Set(0, 1.5f, -2.75f);
+	car.cube3_offset.Set(0, 1.25f, -2.75f);
 	car.cilindre1.Set(1.5, 2.4, 0);
 	car.cilindre1_offset.Set(0, 2.25f, 1.0f);
 	car.window.Set(2.0f, 1.25f, 1.0f);
@@ -200,11 +209,23 @@ PhysVehicle3D* ModulePlayer::CreateVan()
 	VehicleInfo car;
 
 	// Car properties ----------------------------------------
-	car.cube1.Set(2, 2, 4);
-	car.cube1_offset.Set(0, 1.5, 0);
+	car.cube1.Set(3.0f, 1.5f, 7);//3, 3, 4
+	car.cube1_offset.Set(0.0f, 0.75f, 0.0f);//0, 1.5, 0
 	car.cube2.Set(1, 0.5f, 4);
-	car.cube2_offset.Set(0.0f, 0.5f, 3.0f);
-	car.mass = 200.0f;
+	car.cube2_offset.Set(0.0f, 0.5f, 5.0f);
+	car.cube3.Set(1.5f, 0.75f, 1);
+	car.cube3_offset.Set(0.0f, 0.5f, 3.5f);
+	car.cube4.Set(3, 3, 5);
+	car.cube4_offset.Set(0, 1.5, -0.5f);
+	//car.cube5.Set(4.0f, 1.5f, -2.0f);
+	//car.cube5_offset.Set(0.0f, 2.0f, -2.0f);
+	car.cylindre2.Set(1.25f, 2.99f, 0.0f);
+	car.cylindre2_offset.Set(0.0f, 1.75f, 2.25f);
+	car.cylindre3.Set(1.0f, 2.99f, 0.0f);
+	car.cylindre3_offset.Set(0.0f, 2.0f, -2.75f);
+	car.window.Set(3.1f, 1.25f, 3.5f);
+	car.window_offset.Set(0.0f, 2.0f, -0.5f);
+	car.mass = 150.0f;
 	car.suspensionStiffness = 15.88f;
 	car.suspensionCompression = 0.83f;
 	car.suspensionDamping = 0.88f;
@@ -278,7 +299,7 @@ PhysVehicle3D* ModulePlayer::CreateVan()
 	car.wheels[3].steering = false;
 
 	PhysVehicle3D* vehicle = App->physics->AddVehicle(car);
-	vehicle->SetPos(0, 1, 0);
+	vehicle->SetPos(0, 1, -8);
 
 	return vehicle;
 }

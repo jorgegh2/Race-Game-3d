@@ -29,10 +29,18 @@ struct VehicleInfo
 	vec3 cube2_offset;
 	vec3 cube3;
 	vec3 cube3_offset;
+	vec3 cube4;
+	vec3 cube4_offset;
+	vec3 cube5;
+	vec3 cube5_offset;
 	vec3 window;
 	vec3 window_offset;
 	vec3 cilindre1;
 	vec3 cilindre1_offset;
+	vec3 cylindre2;
+	vec3 cylindre2_offset;
+	vec3 cylindre3;
+	vec3 cylindre3_offset;
 
 	float mass;
 	float suspensionStiffness; // default to 5.88 / 10.0 offroad / 50.0 sports car / 200.0 F1 car
