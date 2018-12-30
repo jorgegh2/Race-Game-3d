@@ -18,11 +18,17 @@ public:
 	bool Start();
 	update_status Update(float dt);
 	bool CleanUp();
+	PhysVehicle3D* CreateCar();
+	PhysVehicle3D* CreateVan();
 
 public:
-
+	PhysVehicle3D * car;
+	PhysVehicle3D* van;
 	PhysVehicle3D* vehicle;
+	PhysVehicle3D* vehicle2;
 	float turn;
 	float acceleration;
 	float brake;
+	Cube c;
+	PhysBody3D* pc;
 };

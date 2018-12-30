@@ -43,7 +43,7 @@ update_status ModuleCamera3D::Update(float dt)
 	// Now we can make this movememnt frame rate independant!
 
 	vec3 newPos(0,0,0);
-	float speed = 10.0f * dt;
+	float speed = 20.0f * dt;
 	if(App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 		speed = 8.0f * dt;
 
@@ -161,9 +161,9 @@ void ModuleCamera3D::CalculateViewMatrix()
 void ModuleCamera3D::CameraFollowVehicle(float distance)
 {
 
-	vec3 VehiclePos = App->player->vehicle->GetPos();
+	vec3 VehiclePos = App->player->car->GetPos();
 
-	vec3 BackDirection = App->player->vehicle->GetBackDirection();
+	vec3 BackDirection = App->player->car->GetBackDirection();
 	BackDirection.y = 0.4;
 	App->camera->Position = VehiclePos + (distance * BackDirection) ;
 

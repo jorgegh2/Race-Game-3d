@@ -23,9 +23,17 @@ struct Wheel
 struct VehicleInfo
 {
 	~VehicleInfo();
-	
-	vec3 chassis_size;
-	vec3 chassis_offset;
+	vec3 cube1;
+	vec3 cube1_offset;
+	vec3 cube2;
+	vec3 cube2_offset;
+	vec3 cube3;
+	vec3 cube3_offset;
+	vec3 window;
+	vec3 window_offset;
+	vec3 cilindre1;
+	vec3 cilindre1_offset;
+
 	float mass;
 	float suspensionStiffness; // default to 5.88 / 10.0 offroad / 50.0 sports car / 200.0 F1 car
 	float suspensionCompression; // default to 0.83
@@ -51,6 +59,7 @@ public:
 	void Turn(float degrees);
 	float GetKmh() const;
 	vec3 GetBackDirection() const;
+
 
 public:
 
