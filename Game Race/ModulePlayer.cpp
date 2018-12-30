@@ -6,7 +6,7 @@
 #include "PhysBody3D.h"
 #include "ModulePhysics3D.h"
 
-ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled), vehicle(NULL)
+ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled), car(NULL)
 {
 	turn = acceleration = brake = 0.0f;
 }
@@ -59,14 +59,30 @@ update_status ModulePlayer::Update(float dt)
 
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
-		brake = BRAKE_POWER;
+		if (car->GetKmh() <= 0)
+		{
+			acceleration = -MAX_ACCELERATION;
+		}
+		else
+		{
+			brake = BRAKE_POWER;
+		}
 	}
 
 	car->ApplyEngineForce(acceleration);
 	car->Turn(turn);
 	car->Brake(brake);
 
-	//App->camera->CameraFollowVehicle(20);
+	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
+	{
+		cameraActive = !cameraActive;
+	}
+
+	if (cameraActive)
+	{
+		App->camera->CameraFollowVehicle(DISTANCE_CAMERA);
+	}
+	
 
 	car->Render();
 	van->Render();
@@ -78,8 +94,8 @@ update_status ModulePlayer::Update(float dt)
 	c.SetPos(origin_phys_pc.x, origin_phys_pc.y, origin_phys_pc.z);
 	c.Render();*/
 
-	char title[80];
-	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());
+	char title[TITLE_LENGTH];
+	sprintf_s(title, "La Caravana");
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;
@@ -173,7 +189,7 @@ PhysVehicle3D* ModulePlayer::CreateCar()
 	car.wheels[3].brake = true;
 	car.wheels[3].steering = false;
 
-	vehicle = App->physics->AddVehicle(car);
+	PhysVehicle3D* vehicle = App->physics->AddVehicle(car);
 	vehicle->SetPos(0, 1, 0);
 
 	return vehicle;
@@ -186,6 +202,8 @@ PhysVehicle3D* ModulePlayer::CreateVan()
 	// Car properties ----------------------------------------
 	car.cube1.Set(2, 2, 4);
 	car.cube1_offset.Set(0, 1.5, 0);
+	car.cube2.Set(1, 0.5f, 4);
+	car.cube2_offset.Set(0.0f, 0.5f, 3.0f);
 	car.mass = 200.0f;
 	car.suspensionStiffness = 15.88f;
 	car.suspensionCompression = 0.83f;
@@ -259,7 +277,7 @@ PhysVehicle3D* ModulePlayer::CreateVan()
 	car.wheels[3].brake = true;
 	car.wheels[3].steering = false;
 
-	vehicle = App->physics->AddVehicle(car);
+	PhysVehicle3D* vehicle = App->physics->AddVehicle(car);
 	vehicle->SetPos(0, 1, 0);
 
 	return vehicle;

@@ -5,9 +5,11 @@
 
 struct PhysVehicle3D;
 
-#define MAX_ACCELERATION 1000.0f
+#define MAX_ACCELERATION 2000.0f
 #define TURN_DEGREES 15.0f * DEGTORAD
 #define BRAKE_POWER 1000.0f
+#define DISTANCE_CAMERA 20
+#define TITLE_LENGTH 12
 
 class ModulePlayer : public Module
 {
@@ -24,11 +26,10 @@ public:
 public:
 	PhysVehicle3D * car;
 	PhysVehicle3D* van;
-	PhysVehicle3D* vehicle;
-	PhysVehicle3D* vehicle2;
+	
 	float turn;
 	float acceleration;
 	float brake;
-	Cube c;
-	PhysBody3D* pc;
+	
+	bool cameraActive = true;
 };
