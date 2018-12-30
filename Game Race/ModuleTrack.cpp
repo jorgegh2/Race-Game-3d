@@ -350,6 +350,12 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(-125.0f, 1.5f, 40.0f);
 	App->physics->CreateWall(-125.0f, 1.5f, 35.0f);
 
+	App->physics->CreateWall(-125.0f, 1.5f, 30.0f);
+	App->physics->CreateWall(-125.0f, 1.5f, 25.0f);
+	App->physics->CreateWall(-125.0f, 1.5f, 20.0f);
+	App->physics->CreateWall(-125.0f, 1.5f, 15.0f);
+	App->physics->CreateWall(-125.0f, 1.5f, 10.0f);
+
 
 
 	//Curva 90 grados Izquierda
@@ -369,6 +375,35 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(-142.5f, 1.5f, 45.0f);
 	App->physics->CreateWall(-142.5f, 1.5f, 40.0f);
 	App->physics->CreateWall(-142.5f, 1.5f, 35.0f);
+
+	App->physics->CreateWall(-142.5f, 1.5f, 30.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 25.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 20.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 15.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 10.0f);
+
+	//Final RAMP
+	Cube ramp2;
+	PhysBody3D* physRamp2 = nullptr;
+
+	ramp2.SetPos(-132.5, 1, 0.0f);
+	ramp2.size = { 14, 8, 0.1f };
+	physRamp2 = App->physics->AddBody(ramp2, WALL_MASS);
+
+	ramp2.color = White;
+
+	
+	ramp2.SetRotation(-85, { 1, 0, 0 });
+	
+	physRamp2->SetTransform(ramp2.transform.M);
+	physRamp2->Setgravity0();
+	App->track->wallList.add(ramp2);
+	//cube.SetRotation(0, { 0,1,0 });
+	//phys_cube->SetTransform(cube.transform.M);
+
+	/*vec3 origin_ramp = physRamp1->GetPos();
+	ramp1.SetPos(origin_ramp.x, origin_ramp.y, origin_ramp.z);*/
+
 
 	App->audio->PlayMusic("Music/LaCaravana.wav");
 
