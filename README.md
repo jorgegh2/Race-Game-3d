@@ -8,13 +8,13 @@ Reach the end of the circuit, preferably without overturning the caravan in any 
 
 ## Controls
 
-Cravan:
+Camera
 W: Move forward.
 A: Move Left.
 D: Move Right.
 S: Brake/move Back.
 
-Camera:
+Caravan
 Up Arrow: ForwardA: 
 Left Arrow: Move Left.
 Right Arrow: Move Right.
@@ -22,6 +22,7 @@ Down Arrow: Brake/move Back.
 
 F10: lock/unlock the camera.
 
+F1: Debug Physics.
 F2: Set the caravan in start point.
 
 
