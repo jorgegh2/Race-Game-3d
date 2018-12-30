@@ -21,8 +21,8 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(0.0f, 15.0f, -30.0f));
 	App->camera->LookAt(vec3(0.0f, 0.0f, 1.0f));
 
-	Cube cSensor = { 20,50,20 };
-	cSensor.SetPos(-135, 5, 10);
+	Cube cSensor = { 20,5,2 };
+	cSensor.SetPos(-135, 5, 5);
 	Sensor = App->physics->AddBody(cSensor, 0);
 	Sensor->collision_listeners.add(this);
 	Sensor->SetAsSensor(true);
@@ -59,6 +59,6 @@ update_status ModuleSceneIntro::Update(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	//App->player->cameraActive = false;
+	App->player->cameraActive = false;
 }
 
