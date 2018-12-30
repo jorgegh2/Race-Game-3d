@@ -159,6 +159,11 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(-22.5f, 1.5f, 185.0f);
 	App->physics->CreateWall(-27.5f, 1.5f, 185.0f);
 
+	App->physics->CreateWall(-32.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-37.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-42.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-47.5f, 1.5f, 185.0f);
+
 	//Recta 3 Antes de Rampa Derecha
 
 	App->physics->CreateWall(25.0f, 1.5f, 162.5f);
@@ -176,20 +181,25 @@ bool ModuleTrack::Start() {
 	App->physics->CreateWall(-25.0f, 1.5f, 162.5f);
 	App->physics->CreateWall(-30.0f, 1.5f, 162.5f);
 
+	App->physics->CreateWall(-35.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-40.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-45.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-50.0f, 1.5f, 162.5f);
+
 	//RAMPA 1
 	//85 to 62 = anchura rampa max -> 23, por lo tanto = 7.5 de ancho
 	Cube ramp1;
 	PhysBody3D* physRamp1 = nullptr;
 	//{x, 4, x}
-	ramp1.SetPos(-50, 2, 173);
-	ramp1.size = {0.1f, 8, 17};
+	ramp1.SetPos(-50, 1, 174);
+	ramp1.size = {0.1f, 8, 14};
 	physRamp1 = App->physics->AddBody(ramp1, WALL_MASS);
 
 	ramp1.color = White;
 
 	
 	
-	ramp1.SetRotation(70, {0, 0, 1});
+	ramp1.SetRotation(85, {0, 0, 1});
 	physRamp1->SetTransform(ramp1.transform.M);
 	physRamp1->Setgravity0();
 	App->track->wallList.add(ramp1);
@@ -199,7 +209,97 @@ bool ModuleTrack::Start() {
 	/*vec3 origin_ramp = physRamp1->GetPos();
 	ramp1.SetPos(origin_ramp.x, origin_ramp.y, origin_ramp.z);*/
 
+	//Recta 4 Despues de Rampa Derecha
 
+	App->physics->CreateWall(-55.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-60.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-65.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-70.0f, 1.5f, 162.5f);
+
+	App->physics->CreateWall(-75.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-80.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-85.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-90.0f, 1.5f, 162.5f);
+
+	App->physics->CreateWall(-95.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-100.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-105.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-110.0f, 1.5f, 162.5f);
+
+	App->physics->CreateWall(-115.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-120.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-125.0f, 1.5f, 162.5f);
+	App->physics->CreateWall(-130.0f, 1.5f, 162.5f);
+
+	//Recta 4 Despues de Rampa Izquierda
+
+	App->physics->CreateWall(-52.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-57.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-62.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-67.5f, 1.5f, 185.0f);
+
+	App->physics->CreateWall(-72.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-77.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-82.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-87.5f, 1.5f, 185.0f);
+
+	App->physics->CreateWall(-92.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-97.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-102.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-107.5f, 1.5f, 185.0f);
+
+	App->physics->CreateWall(-112.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-117.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-122.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-127.5f, 1.5f, 185.0f);
+
+	//Curva 4 Derecha
+
+	App->physics->CreateWall(-135.0f, 1.5f, 160.0f);
+	App->physics->CreateWall(-140.0f, 1.5f, 157.5f);
+	App->physics->CreateWall(-140.0f, 1.5f, 152.5f);
+	App->physics->CreateWall(-135.0f, 1.5f, 150.0f);
+
+	App->physics->CreateWall(-135.0f, 1.5f, 145.0f);
+	App->physics->CreateWall(-130.0f, 1.5f, 140.0f);
+	App->physics->CreateWall(-125.0f, 1.5f, 135.0f);
+
+	//Curva 4 Izquierda
+
+	App->physics->CreateWall(-132.5f, 1.5f, 185.0f);
+	App->physics->CreateWall(-137.5f, 1.5f, 182.5f);
+	App->physics->CreateWall(-142.5f, 1.5f, 180.0f);
+	App->physics->CreateWall(-147.5f, 1.5f, 177.5f);
+
+	App->physics->CreateWall(-152.5f, 1.5f, 175.0f);
+	App->physics->CreateWall(-157.5f, 1.5f, 172.5f);
+	App->physics->CreateWall(-162.5f, 1.5f, 170.0f);
+	App->physics->CreateWall(-162.5f, 1.5f, 165.0f);
+
+	App->physics->CreateWall(-162.5f, 1.5f, 160.0f);
+	App->physics->CreateWall(-162.5f, 1.5f, 155.0f);
+	App->physics->CreateWall(-162.5f, 1.5f, 150.0f);
+	App->physics->CreateWall(-162.5f, 1.5f, 145.0f);
+
+	App->physics->CreateWall(-157.5f, 1.5f, 140.0f);
+	App->physics->CreateWall(-152.5f, 1.5f, 135.0f);
+	App->physics->CreateWall(-147.5f, 1.5f, 130.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 125.0f);
+
+	//Espacio Cuadrado Derecha
+
+	App->physics->CreateWall(-120.0f, 1.5f, 135.0f);
+	App->physics->CreateWall(-115.0f, 1.5f, 135.0f);
+	App->physics->CreateWall(-110.0f, 1.5f, 135.0f);
+	App->physics->CreateWall(-105.0f, 1.5f, 135.0f);
+
+	//Espacio Cuadrado Izquierda
+
+	App->physics->CreateWall(-142.5f, 1.5f, 120.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 115.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 110.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 105.0f);
+	App->physics->CreateWall(-142.5f, 1.5f, 100.0f);
 
 	return true;
 }
